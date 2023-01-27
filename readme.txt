@@ -1,0 +1,28 @@
+=== Bizpress Xero Resources ===
+Contributors: Bizink,Jayden Major
+Tags: Bizink, Bizpress, business content, marketing
+Requires at least: 5.6
+Tested up to: 6.1
+Stable tag: 1.2
+Version: 1.2
+Requires PHP: 7.0
+
+Display business content on your website that is automatically updated by the Bizink team.
+
+== Description ==
+Display business content on your website that is automatically updated by the Bizink team.
+
+
+== Changelog ==
+
+= 1.2 =
+* Update for permilinks
+
+= 1.1 =
+* Added fix for checking for the main bizpress plugin
+
+= 1.0 =
+* Bizpress launch
+
+= 0.9 =
+* Pre Realease

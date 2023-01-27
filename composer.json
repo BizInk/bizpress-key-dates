@@ -1,0 +1,9 @@
+{
+  "name": "bizink/bizink-client-keydates-aus",
+  "keywords": ["wordpress", "theme"],
+  "homepage": "bizinkonline.com",
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "v1.0.7"
+  }
+}
