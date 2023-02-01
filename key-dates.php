@@ -25,19 +25,46 @@ function keydates_settings_fields( $fields, $section ) {
 add_filter( 'cx-settings-fields', 'keydates_settings_fields', 10, 2 );
 
 function keydates_content( $types ) {
+	$options = get_option( 'bizink-client_basic' );
+	if(empty($options['content_region'])){
+		$options['content_region'] = 'au';
+	}
+	$type = 'keydates-au';
+	switch(strtolower($options['content_region'])){
+		case 'ca':
+			$type = 'keydates-ca';
+			break;
+		case 'us':
+			$type = 'keydates-us';
+			break;
+		case 'nz':
+			$type = 'keydates-nz';
+			break;
+		case 'gb':
+		case 'uk':
+			$type = 'keydates-gb';
+		break;
+		case 'au':
+		default:
+			$type = 'keydates-au';
+			break;			
+	}
+
 	$types[] = [
 		'key' 	=> 'keydates_content_page',
-		'type'	=> 'keydates'
+		'type'	=> $type
 	];
 
 	return $types;
 }
 add_filter( 'bizink-content-types', 'keydates_content' );
 
+/*
 function keydates_country(){
 	return 'AU';
 }
 add_filter('bizink-keydates-country', 'keydates_country' );
+*/
 
 if( !function_exists( 'bizink_get_keydates_page_object' ) ){
 	function bizink_get_keydates_page_object(){
