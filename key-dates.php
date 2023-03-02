@@ -17,7 +17,7 @@ function keydates_settings_fields( $fields, $section ) {
 		'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizink-content]</code> shortcode.', 'bizink-client' ),
 		'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
 		// 'chosen'	=> true,
-		'required'	=> true,
+		'required'	=> false,
 	);
 
 	return $fields;
