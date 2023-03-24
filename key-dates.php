@@ -6,6 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+add_filter( 'display_post_states', 'bizpress_keydates_post_states', 10, 2 );
+function bizpress_keydates_post_states( $post_states, $post ) {
+	$keydatesPageID = cxbc_get_option( 'bizink-client_basic', 'keydates_content_page' );
+    if ( $keydatesPageID == $post->ID ) {
+        $post_states['bizpress_keydates'] = __('BizPress Keydates Resources','bizink-client');
+    }
+    return $post_states;
+}
+
 function keydates_settings_fields( $fields, $section ) {
 
 	//if ( 'bizink-client_basic' != $section['id'] ) return $fields;
@@ -24,7 +33,7 @@ function keydates_settings_fields( $fields, $section ) {
 	if('bizink-client_content' == $section['id']){
 		$fields['keydates_label'] = array(
 			'id'    => 'keydates',
-	        'label'	=> __( 'Bizpress Key Dates', 'bizink-client' ),
+	        'label'	=> __( 'BizPress Key Dates', 'bizink-client' ),
 	        'type'  => 'divider'
 		);
 		$fields['keydates_title'] = array(
@@ -105,9 +114,9 @@ if( !function_exists( 'bizink_keydates_init' ) ){
 			add_rewrite_tag('%'.$post->post_name.'%', '([^&]+)', 'bizpress=');
 			add_rewrite_rule('^'.$post->post_name . '/([^/]+)/?$','index.php?pagename=keydates&bizpress=$matches[1]','top');
 			add_rewrite_rule("^".$post->post_name."/([a-z0-9-]+)[/]?$",'index.php?pagename=keydates&bizpress=$matches[1]','top');
-			add_rewrite_rule("^".$post->post_name."/topic/([a-z0-9-]+)[/]?$",'index.php?pagename=keydates&topic=$matches[1]','top');
-			add_rewrite_rule("^".$post->post_name."/type/([a-z0-9-]+)[/]?$" ,'index.php?pagename=keydates&type=$matches[1]','top');
-			//flush_rewrite_rules();
+			//add_rewrite_rule("^".$post->post_name."/topic/([a-z0-9-]+)[/]?$",'index.php?pagename=keydates&topic=$matches[1]','top');
+			//add_rewrite_rule("^".$post->post_name."/type/([a-z0-9-]+)[/]?$" ,'index.php?pagename=keydates&type=$matches[1]','top');
+			flush_rewrite_rules();
 		}
 	}
 }
