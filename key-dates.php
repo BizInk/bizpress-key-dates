@@ -76,6 +76,9 @@ function keydates_content( $types ) {
 		case 'uk':
 			$type = 'keydates-gb';
 		break;
+		case 'ie':
+			$type = 'keydates-ie';
+		break;
 		case 'au':
 		default:
 			$type = 'keydates-au';
