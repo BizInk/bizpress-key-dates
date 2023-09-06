@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_filter( 'display_post_states', 'bizpress_keydates_post_states', 10, 2 );
 function bizpress_keydates_post_states( $post_states, $post ) {
+	if( !function_exists( 'cxbc_get_option' ) ) return $post_states;
 	$keydatesPageID = cxbc_get_option( 'bizink-client_basic', 'keydates_content_page' );
     if ( $keydatesPageID == $post->ID ) {
         $post_states['bizpress_keydates'] = __('BizPress Keydates Resources','bizink-client');
@@ -105,15 +106,10 @@ function keydates_content( $types ) {
 }
 add_filter( 'bizink-content-types', 'keydates_content' );
 
-/*
-function keydates_country(){
-	return 'AU';
-}
-add_filter('bizink-keydates-country', 'keydates_country' );
-*/
 
 if( !function_exists( 'bizink_get_keydates_page_object' ) ){
 	function bizink_get_keydates_page_object(){
+		if( !function_exists( 'cxbc_get_option' ) ) return false;
 		$post_id = cxbc_get_option( 'bizink-client_basic', 'keydates_content_page' );
 		$post = get_post( $post_id );
 		return $post; 
