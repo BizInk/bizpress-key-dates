@@ -5,7 +5,8 @@
  * Plugin URI: https://bizinkonline.com
  * Author: Bizink
  * Author URI: https://bizinkonline.com
- * Version: 1.3.8
+ * Version: 1.3.9
+ * Requires PHP: 8.3
  * Text Domain: bizink-client-keydates
  * Domain Path: /languages
  */
